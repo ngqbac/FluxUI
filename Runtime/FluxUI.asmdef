@@ -1,0 +1,7 @@
+{
+  "name": "FluxUI",
+  "rootNamespace": "FluxUI",
+  "references": [],
+  "includePlatforms": [],
+  "autoReferenced": true
+}

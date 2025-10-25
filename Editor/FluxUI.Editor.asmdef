@@ -1,0 +1,7 @@
+{
+  "name": "FluxUI.Editor",
+  "rootNamespace": "FluxUI.Editor",
+  "references": [],
+  "includePlatforms": [],
+  "autoReferenced": true
+}
