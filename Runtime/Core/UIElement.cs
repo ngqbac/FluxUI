@@ -1,3 +1,4 @@
+using FluxUI.Logging;
 using OrganicBeing.Integration.Unity;
 
 namespace FluxUI.Core
@@ -32,5 +33,7 @@ namespace FluxUI.Core
             base.OnRecycle();
             Conceal();
         }
+
+        protected void Verbose(object message) => FluxUILogger.Verbose(this, message);
     }
 }
