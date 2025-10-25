@@ -27,11 +27,5 @@ namespace FluxUI.Binding
                 _onDispose?.Invoke();
             }
         }
-        
-        public static IDisposable AddTo(this IDisposable disposable, IViewModel viewModel)
-        {
-            viewModel.AddBinding(disposable);
-            return disposable;
-        }
     }
 }

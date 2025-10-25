@@ -2,7 +2,7 @@ using FluxUI.Binding;
 using FluxUI.Logging;
 using OrganicBeing.Integration.Unity;
 
-namespace FluxUI.Core
+namespace FluxUI.UIElements
 {
     public abstract class UIElement : MonoOrganic
     {

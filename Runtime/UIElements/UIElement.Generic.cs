@@ -1,8 +1,10 @@
 using FluxUI.Arguments;
 using FluxUI.Logging;
+using FluxUI.ViewModels;
 using OrganicBeing.Core;
 
-namespace FluxUI.Core
+namespace FluxUI.UIElements
+
 {
     public abstract class UIElement<TArg, TViewModel> : UIElement, IOrganicHost<TArg>
         where TArg : IUIArgument

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluxUI.Binding;
 using FluxUI.ViewModels;
 
-namespace FluxUI.Core
+namespace FluxUI.ViewModels
 {
     public abstract class UIViewModel: IViewModel
     {

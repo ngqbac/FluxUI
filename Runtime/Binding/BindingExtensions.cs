@@ -1,20 +1,10 @@
-using FluxUI.Binding;
-using FluxUI.Core;
 using FluxUI.ViewModels;
 using UnityEngine.UI;
 
-namespace FluxUI.Extensions
+namespace FluxUI.Binding
 {
-    public static class FluxUICoreHelper
+    public static class BindingExtensions
     {
-        public static void BindLifecycleTo(this UIElement element, UIViewModel viewModel)
-        {
-            element.OnWillRevealCommand.Subscribe(viewModel.OnUIWillReveal).AddTo(viewModel);
-            element.OnDidRevealCommand.Subscribe(viewModel.OnUIDidReveal).AddTo(viewModel);
-            element.OnWillConcealCommand.Subscribe(viewModel.OnUIWillConceal).AddTo(viewModel);
-            element.OnDidConcealCommand.Subscribe(viewModel.OnUIDidConceal).AddTo(viewModel);
-        }
-        
         public static void BindText<TViewModel>(
             this TViewModel viewModel,
             ReactiveProperty<string> prop,
