@@ -1,0 +1,9 @@
+{
+  "name": "FluxUI.Layout",
+  "rootNamespace": "FluxUI.Layout",
+  "references": [
+    "OrganicBeing"
+  ],
+  "includePlatforms": [],
+  "autoReferenced": true
+}
