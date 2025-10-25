@@ -8,5 +8,8 @@
     "name": "NortyGuy",
     "email": "ngqbac@gmail.com"
   },
-  "keywords": ["ui"]
+  "keywords": ["ui"],
+  "dependencies": {
+    "com.norty.organicbeing": "https://github.com/ngqbac/OrganicBeing.git"
+  }
 }

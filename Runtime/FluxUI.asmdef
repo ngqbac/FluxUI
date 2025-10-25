@@ -1,7 +1,9 @@
 {
   "name": "FluxUI",
   "rootNamespace": "FluxUI",
-  "references": [],
+  "references": [
+    "OrganicBeing"
+  ],
   "includePlatforms": [],
   "autoReferenced": true
 }
