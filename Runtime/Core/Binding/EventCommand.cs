@@ -17,5 +17,32 @@ namespace FluxUI.Binding
             _listeners.Add(listener);
             return Disposable.Create(() => _listeners.Remove(listener));
         }
+        
+        public void Clear()
+        {
+            _listeners.Clear();
+        }
+    }
+    
+    public class EventCommand<T>
+    {
+        private readonly List<Action<T>> _listeners = new();
+
+        public void Invoke(T value)
+        {
+            foreach (var l in _listeners)
+                l(value);
+        }
+
+        public IDisposable Subscribe(Action<T> listener)
+        {
+            _listeners.Add(listener);
+            return Disposable.Create(() => _listeners.Remove(listener));
+        }
+        
+        public void Clear()
+        {
+            _listeners.Clear();
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace FluxUI.Core
     public abstract class UIViewModel: IViewModel
     {
         private readonly List<IDisposable> _bindings = new();
+        public void AddBinding(IDisposable disposable) => _bindings.Add(disposable);
 
         protected void Bind<T>(ReactiveProperty<T> prop, Action<T> onChanged)
         {
@@ -29,7 +30,10 @@ namespace FluxUI.Core
         }
 
         protected virtual void OnBind() { }
-
-        public void AddBinding(IDisposable disposable) => _bindings.Add(disposable);
+        
+        public virtual void OnUIWillReveal() { }
+        public virtual void OnUIDidReveal() { }
+        public virtual void OnUIWillConceal() { }
+        public virtual void OnUIDidConceal() { }
     }
 }

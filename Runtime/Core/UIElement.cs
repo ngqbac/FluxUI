@@ -1,3 +1,4 @@
+using FluxUI.Binding;
 using FluxUI.Logging;
 using OrganicBeing.Integration.Unity;
 
@@ -5,6 +6,11 @@ namespace FluxUI.Core
 {
     public abstract class UIElement : MonoOrganic
     {
+        public readonly EventCommand OnWillRevealCommand = new();
+        public readonly EventCommand OnDidRevealCommand = new();
+        public readonly EventCommand OnWillConcealCommand = new();
+        public readonly EventCommand OnDidConcealCommand = new();
+        
         public bool IsVisible { get; private set; }
 
         public virtual void Reveal() => WhenReady(() =>
@@ -23,15 +29,34 @@ namespace FluxUI.Core
             OnDidConceal();
         });
 
-        protected virtual void OnWillReveal() { }
-        protected virtual void OnDidReveal() { }
-        protected virtual void OnWillConceal() { }
-        protected virtual void OnDidConceal() { }
+        protected virtual void OnWillReveal()
+        {
+            OnWillRevealCommand.Invoke();
+        }
+
+        protected virtual void OnDidReveal()
+        {
+            OnDidRevealCommand.Invoke();
+        }
+
+        protected virtual void OnWillConceal()
+        {
+            OnWillConcealCommand.Invoke();
+        }
+
+        protected virtual void OnDidConceal()
+        {
+            OnDidConcealCommand.Invoke();
+        }
 
         public override void OnRecycle()
         {
             base.OnRecycle();
             Conceal();
+            OnWillRevealCommand.Clear();
+            OnDidRevealCommand.Clear();
+            OnWillConcealCommand.Clear();
+            OnDidConcealCommand.Clear();
         }
 
         protected void Verbose(object message) => FluxUILogger.Verbose(message);
