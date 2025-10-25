@@ -34,6 +34,6 @@ namespace FluxUI.Core
             Conceal();
         }
 
-        protected void Verbose(object message) => FluxUILogger.Verbose(this, message);
+        protected void Verbose(object message) => FluxUILogger.Verbose(message);
     }
 }

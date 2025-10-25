@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using System.IO;
+using FluxUI.Logging;
 using FluxUI.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace FluxUI.Editor
 
             if (File.Exists(assetPath))
             {
-                // OrganicLog.Info("OrganicConfig already exists.");
+                FluxUILogger.Info("Config already exists.");
                 Selection.activeObject = AssetDatabase.LoadAssetAtPath<FluxUIConfig>(assetPath);
                 return;
             }
@@ -29,8 +30,8 @@ namespace FluxUI.Editor
             var config = ScriptableObject.CreateInstance<FluxUIConfig>();
             AssetDatabase.CreateAsset(config, assetPath);
             AssetDatabase.SaveAssets();
-            //
-            // OrganicLog.Info("OrganicConfig created at Assets/Resources/OrganicConfig.asset");
+            
+            FluxUILogger.Info("Config created at Assets/Resources/FluxUIConfig.asset.");
             Selection.activeObject = config;
         }
     }
