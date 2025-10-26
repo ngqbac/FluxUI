@@ -10,6 +10,7 @@
   },
   "keywords": ["ui"],
   "dependencies": {
-    "com.norty.organicbeing": "https://github.com/ngqbac/OrganicBeing.git"
+    "com.norty.organicbeing": "https://github.com/ngqbac/OrganicBeing.git",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
   }
 }

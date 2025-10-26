@@ -2,7 +2,12 @@
   "name": "FluxUI",
   "rootNamespace": "FluxUI",
   "references": [
-    "OrganicBeing"
+    "OrganicBeing",
+    "OrganicBeing.UniTask",
+    "UniTask"
+  ],
+  "defineConstraints": [
+    "ORGANIC_UNITASK"
   ],
   "includePlatforms": [],
   "autoReferenced": true

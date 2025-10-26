@@ -1,10 +1,12 @@
+using Cysharp.Threading.Tasks;
 using FluxUI.Binding;
 using FluxUI.Logging;
+using OrganicBeing.Integration.Async;
 using OrganicBeing.Integration.Unity;
 
 namespace FluxUI.UIElements
 {
-    public abstract class UIElement : MonoOrganic
+    public abstract class UIElement : MonoOrganic, IUIElement
     {
         public readonly EventCommand OnWillRevealCommand = new();
         public readonly EventCommand OnDidRevealCommand = new();
@@ -13,7 +15,13 @@ namespace FluxUI.UIElements
         
         public bool IsVisible { get; private set; }
 
-        public virtual void Reveal() => WhenReady(() =>
+        public string ElementId { get; protected set; }
+        
+        public void Reveal() => RevealAsync().Forget();
+
+        public void Conceal() => ConcealAsync().Forget();
+
+        public virtual async UniTask RevealAsync() => await this.WhenReadyAsync(() =>
         {
             OnWillReveal();
             gameObject.SetActive(true);
@@ -21,7 +29,7 @@ namespace FluxUI.UIElements
             OnDidReveal();
         });
 
-        public virtual void Conceal() => WhenReady(() =>
+        public virtual async UniTask ConcealAsync() => await this.WhenReadyAsync(() =>
         {
             OnWillConceal();
             gameObject.SetActive(false);
@@ -59,6 +67,6 @@ namespace FluxUI.UIElements
             OnDidConcealCommand.Clear();
         }
 
-        protected void Verbose(object message) => FluxUILogger.Verbose(message);
+        protected static void Verbose(object message) => FluxUILogger.Verbose(message);
     }
 }
